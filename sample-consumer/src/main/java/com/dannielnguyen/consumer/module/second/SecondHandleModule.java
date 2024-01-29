@@ -1,4 +1,4 @@
-package com.dannielnguyen.consumer.module.first;
+package com.dannielnguyen.consumer.module.second;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -13,10 +13,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Component
 @Configurable
-public class FirstHandleModule {
+public class SecondHandleModule {
 
-    private static final String JOB_NAME = "FIRST_HANDLE_JOB";
-    private static final String STEP_NAME = "FIRST_HANDLE_JOB_FIRST_STEP";
+    private static final String JOB_NAME = "SECOND_HANDLE_JOB";
+    private static final String STEP_NAME = "SECOND_HANDLE_JOB_FIRST_STEP";
 
     @Autowired
     private PlatformTransactionManager transactionManager;
@@ -25,12 +25,12 @@ public class FirstHandleModule {
     private JobRepository jobRepository;
 
     @Autowired
-    private FirstHandleTasklet firstHandleTasklet;
+    private SecondHandleTasklet secondHandleTasklet;
 
     @Bean
-    public Job firstHandleJob() {
+    public Job secondHandleJob() {
         Step sampleFirstStep = new StepBuilder(STEP_NAME, this.jobRepository)
-                .tasklet(firstHandleTasklet, this.transactionManager).build();
+                .tasklet(secondHandleTasklet, this.transactionManager).build();
 
         return new JobBuilder(this.JOB_NAME, this.jobRepository)
                 .start(sampleFirstStep)

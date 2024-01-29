@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
-public class FirstConsumer {
+public class SecondConsumer {
 
     protected final Log LOGGER = LogFactory.getLog(getClass());
 
@@ -34,15 +34,15 @@ public class FirstConsumer {
     private JobLauncher jobLauncher;
 
     @Autowired
-    private Job firstHandleJob;
+    private Job secondHandleJob;
 
-    @Value("${kafka.consumer.first.id}")
+    @Value("${kafka.consumer.second.id}")
     private String consumerId;
 
-    @Value("${kafka.consumer.first.group}")
+    @Value("${kafka.consumer.second.group}")
     private String consumerGroup;
 
-    @KafkaListener(topics = "${kafka.topic}", groupId = "${kafka.consumer.first.group}")
+    @KafkaListener(topics = "${kafka.topic}", groupId = "${kafka.consumer.second.group}")
     public void consume(String message) {
         // Print statement
         System.out.println("message = " + message);
@@ -66,7 +66,7 @@ public class FirstConsumer {
                     jobParameters.getString(JOB_CONSUMER_GROUP),
                     jobParameters.getString(JOB_PAYLOAD)));
 
-            jobLauncher.run(firstHandleJob, jobParameters);
+            jobLauncher.run(secondHandleJob, jobParameters);
 
         } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException |
                  JobParametersInvalidException e) {
