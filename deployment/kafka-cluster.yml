@@ -5,9 +5,9 @@ version: "2"
 
 services:
   kafka-0:
-    image: docker.io/bitnami/kafka:3.9
+    image: docker.io/bitnami/kafka:3.6
     ports:
-      - "9092"
+      - "9095:9095"
     environment:
       # KRaft settings
       - KAFKA_CFG_NODE_ID=0
@@ -15,9 +15,9 @@ services:
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=ahikbcdefrstuvglmnopqj
       # Listeners
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://0.0.0.0:9095
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,EXTERNAL://10.16.1.3:9095
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
       # Clustering
@@ -27,9 +27,9 @@ services:
     volumes:
       - kafka_0_data:/bitnami/kafka
   kafka-1:
-    image: docker.io/bitnami/kafka:3.9
+    image: docker.io/bitnami/kafka:3.6
     ports:
-      - "9092"
+      - "9096:9096"
     environment:
       # KRaft settings
       - KAFKA_CFG_NODE_ID=1
@@ -37,9 +37,9 @@ services:
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=ahikbcdefrstuvglmnopqj
       # Listeners
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://0.0.0.0:9096
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,EXTERNAL://10.16.1.3:9096
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
       # Clustering
@@ -49,9 +49,9 @@ services:
     volumes:
       - kafka_1_data:/bitnami/kafka
   kafka-2:
-    image: docker.io/bitnami/kafka:3.9
+    image: docker.io/bitnami/kafka:3.6
     ports:
-      - "9092"
+      - "9097:9097"
     environment:
       # KRaft settings
       - KAFKA_CFG_NODE_ID=2
@@ -59,9 +59,9 @@ services:
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=ahikbcdefrstuvglmnopqj
       # Listeners
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://0.0.0.0:9097
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,EXTERNAL://10.16.1.3:9097
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
       # Clustering
@@ -75,12 +75,18 @@ volumes:
   kafka_0_data:
     driver: local
     driver_opts:
-      mountpoint: /srv/bitnami/kafka/node0
+      o: bind
+      type: none
+      device: /srv/bitnami/kafka/node0
   kafka_1_data:
     driver: local
     driver_opts:
-      mountpoint: /srv/bitnami/kafka/node1
+      o: bind
+      type: none
+      device: /srv/bitnami/kafka/node1
   kafka_2_data:
     driver: local
     driver_opts:
-      mountpoint: /srv/bitnami/kafka/node2
+      o: bind
+      type: none
+      device: /srv/bitnami/kafka/node2

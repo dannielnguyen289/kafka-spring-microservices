@@ -1,0 +1,1 @@
+docker run -it --rm bitnami/kafka:3.6 kafka-topics.sh --list  --bootstrap-server 10.16.1.3:9095
