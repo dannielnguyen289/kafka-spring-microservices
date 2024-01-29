@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleconsumer.module.sample;
+package com.dannielnguyen.sampleconsumer.module.first;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -9,7 +9,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SampleTasklet implements Tasklet {
+public class FirstHandleTasklet implements Tasklet {
 
     private final Log LOGGER = LogFactory.getLog(getClass());
 

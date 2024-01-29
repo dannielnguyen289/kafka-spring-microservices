@@ -18,25 +18,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
-public class KafkaConsumer {
+public class FirstConsumer {
 
     protected final Log LOGGER = LogFactory.getLog(getClass());
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSZZ");
 
-    private static final String JOB_PARAM_TASK_ID = "JOB_PARAM_TASK_ID";
-
-    private static final String JOB_PARAM_TASK_RETRY = "JOB_PARAM_TASK_RETRY";
+    private static final String JOB_PAYLOAD = "JOB_PAYLOAD";
 
     @Autowired
     private JobLauncher jobLauncher;
 
     @Autowired
-    private Job sampleJob;
+    private Job firstConsumerHandleJob;
 
     @KafkaListener(topics = "${kafka.topic}")
-    public void consume(String message)
-    {
+    public void consume(String message) {
         // Print statement
         System.out.println("message = " + message);
 
@@ -45,19 +42,17 @@ public class KafkaConsumer {
 
         // Create job parameters
         JobParameters jobParameters = new JobParametersBuilder()
-                .addLong(JOB_PARAM_TASK_ID, 1L)
-                .addLong(JOB_PARAM_TASK_RETRY, 1L)
+                .addString(JOB_PAYLOAD, message)
                 .toJobParameters();
 
         // Start running job
         try {
 
-            LOGGER.info(String.format("==[SAMPLE SCHEDULER (%s)] START SAMPLE JOB: %d - %d",
+            LOGGER.info(String.format("==[SAMPLE SCHEDULER (%s)] START FIRST_CONSUMER_JOB: %s",
                     dateFormat.format(currentDateTime),
-                    jobParameters.getLong(JOB_PARAM_TASK_ID),
-                    jobParameters.getLong(JOB_PARAM_TASK_RETRY)));
+                    jobParameters.getString(JOB_PAYLOAD)));
 
-            jobLauncher.run(sampleJob, jobParameters);
+            jobLauncher.run(firstConsumerHandleJob, jobParameters);
 
         } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException |
                  JobParametersInvalidException e) {
