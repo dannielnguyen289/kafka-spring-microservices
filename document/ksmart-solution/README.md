@@ -12,8 +12,7 @@ enhanced decision making and traceability to improve metrics, increase board qua
 </div>
 
 <div align="center">
-    <br />
-    [![KSmart Solution](https://img.youtube.com/vi/Z5IM0YOOibQ/hqdefault.jpg)](https://www.youtube.com/watch?v=RYJTLqn7nYU&t=41s)
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Z5IM0YOOibQ?si=TExfWBvXzR7ByfBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 ## 3. Key Features
