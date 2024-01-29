@@ -11,6 +11,7 @@ import org.springframework.batch.core.repository.JobExecutionAlreadyRunningExcep
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,9 @@ public class FirstConsumer {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSZZ");
 
+    private static final String JOB_TIME = "JOB_TIME";
+    private static final String JOB_CONSUMER_ID = "JOB_CONSUMER_ID";
+    private static final String JOB_CONSUMER_GROUP = "JOB_CONSUMER_GROUP";
     private static final String JOB_PAYLOAD = "JOB_PAYLOAD";
 
     @Autowired
@@ -32,7 +36,13 @@ public class FirstConsumer {
     @Autowired
     private Job firstConsumerHandleJob;
 
-    @KafkaListener(topics = "${kafka.topic}")
+    @Value("${kafka.consumer.first.id}")
+    private String consumerId;
+
+    @Value("${kafka.consumer.first.group}")
+    private String consumerGroup;
+
+    @KafkaListener(topics = "${kafka.topic}", groupId = "${kafka.consumer.first.group}")
     public void consume(String message) {
         // Print statement
         System.out.println("message = " + message);
@@ -42,14 +52,18 @@ public class FirstConsumer {
 
         // Create job parameters
         JobParameters jobParameters = new JobParametersBuilder()
+                .addLong(JOB_TIME, currentDateTime.getTime())
+                .addString(JOB_CONSUMER_ID, this.consumerId)
+                .addString(JOB_CONSUMER_GROUP, this.consumerGroup)
                 .addString(JOB_PAYLOAD, message)
                 .toJobParameters();
 
         // Start running job
         try {
 
-            LOGGER.info(String.format("==[SAMPLE SCHEDULER (%s)] START FIRST_CONSUMER_JOB: %s",
-                    dateFormat.format(currentDateTime),
+            LOGGER.info(String.format("==[FirstConsumer] START FIRST_HANDLE_JOB[%s][%s]: %s",
+                    jobParameters.getString(JOB_CONSUMER_ID),
+                    jobParameters.getString(JOB_CONSUMER_GROUP),
                     jobParameters.getString(JOB_PAYLOAD)));
 
             jobLauncher.run(firstConsumerHandleJob, jobParameters);

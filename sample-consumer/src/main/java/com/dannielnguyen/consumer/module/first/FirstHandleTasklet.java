@@ -15,6 +15,8 @@ public class FirstHandleTasklet implements Tasklet {
 
     private final Log LOGGER = LogFactory.getLog(getClass());
 
+    private static final String JOB_CONSUMER_ID = "JOB_CONSUMER_ID";
+    private static final String JOB_CONSUMER_GROUP = "JOB_CONSUMER_GROUP";
     private static final String JOB_PAYLOAD = "JOB_PAYLOAD";
 
     @Autowired
@@ -22,16 +24,15 @@ public class FirstHandleTasklet implements Tasklet {
 
     @Override
     public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-
-        this.LOGGER.debug("SampleTasklet -> execute");
-
         // Get job parameters
         JobParameters jobParameters = chunkContext.getStepContext().getStepExecution().getJobParameters();
+        String consumerId = jobParameters.getString(JOB_CONSUMER_ID);
+        String consumerGroup = jobParameters.getString(JOB_CONSUMER_GROUP);
         String payload = jobParameters.getString(JOB_PAYLOAD);
 
-        this.LOGGER.debug(payload);
+        this.LOGGER.debug(String.format("SampleTasklet -> execute[%s][%s]: %s", consumerId, consumerGroup, payload));
 
-        this.firstHandleService.execute(payload);
+        this.firstHandleService.execute(consumerId, consumerGroup, payload);
 
         return RepeatStatus.FINISHED;
     }
