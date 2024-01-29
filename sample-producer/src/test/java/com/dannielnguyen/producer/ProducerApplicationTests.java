@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleproducer;
+package com.dannielnguyen.producer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
