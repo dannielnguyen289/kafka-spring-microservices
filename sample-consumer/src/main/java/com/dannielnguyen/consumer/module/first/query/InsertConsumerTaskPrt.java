@@ -11,5 +11,6 @@ public class InsertConsumerTaskPrt {
     Long id;
     String consumerId;
     String consumerGroup;
+    String handler;
     String payload;
 }

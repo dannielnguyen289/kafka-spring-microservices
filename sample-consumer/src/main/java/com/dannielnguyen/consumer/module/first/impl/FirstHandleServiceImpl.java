@@ -29,6 +29,7 @@ public class FirstHandleServiceImpl extends BaseService implements FirstHandleSe
         InsertConsumerTaskPrt params = new InsertConsumerTaskPrt();
         params.setConsumerId(this.consumerId);
         params.setConsumerGroup(this.consumerGroup);
+        params.setHandler(getClass().getName());
         params.setPayload(payload);
 
         this.firstHandleRepository.insertConsumerTask(params);

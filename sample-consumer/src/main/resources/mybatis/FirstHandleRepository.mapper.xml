@@ -8,10 +8,12 @@
         INSERT INTO CONSUMER_TASK (
             CONSUMER_ID,
             CONSUMER_GROUP,
+            HANDLER,
             PAYLOAD
         ) VALUES (
             #{consumerId},
             #{consumerGroup},
+            #{handler},
             #{payload}
         )
     </insert>
