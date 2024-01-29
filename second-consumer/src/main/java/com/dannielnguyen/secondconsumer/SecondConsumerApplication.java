@@ -1,13 +1,13 @@
-package com.dannielnguyen.sampleproducer;
+package com.dannielnguyen.secondconsumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SampleProducerApplication {
+public class SecondConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SampleProducerApplication.class, args);
+        SpringApplication.run(SecondConsumerApplication.class, args);
     }
 
 }

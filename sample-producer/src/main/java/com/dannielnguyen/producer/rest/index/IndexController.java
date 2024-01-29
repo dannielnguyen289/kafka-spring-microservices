@@ -1,6 +1,6 @@
-package com.dannielnguyen.sampleproducer.rest.index;
+package com.dannielnguyen.producer.rest.index;
 
-import com.dannielnguyen.sampleproducer.core.base.BaseController;
+import com.dannielnguyen.producer.core.base.BaseController;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

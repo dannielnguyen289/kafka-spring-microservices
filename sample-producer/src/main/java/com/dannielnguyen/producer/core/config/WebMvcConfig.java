@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleproducer.core.config;
+package com.dannielnguyen.producer.core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

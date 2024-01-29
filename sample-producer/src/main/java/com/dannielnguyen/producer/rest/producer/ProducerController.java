@@ -1,8 +1,8 @@
-package com.dannielnguyen.sampleproducer.rest.producer;
+package com.dannielnguyen.producer.rest.producer;
 
-import com.dannielnguyen.sampleproducer.core.base.BaseController;
-import com.dannielnguyen.sampleproducer.rest.producer.dto.PublishEventReqBody;
-import com.dannielnguyen.sampleproducer.rest.producer.dto.PublishEventResBody;
+import com.dannielnguyen.producer.core.base.BaseController;
+import com.dannielnguyen.producer.rest.producer.dto.PublishEventReqBody;
+import com.dannielnguyen.producer.rest.producer.dto.PublishEventResBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

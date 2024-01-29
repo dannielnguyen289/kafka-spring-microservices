@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleproducer.core.base;
+package com.dannielnguyen.producer.core.base;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

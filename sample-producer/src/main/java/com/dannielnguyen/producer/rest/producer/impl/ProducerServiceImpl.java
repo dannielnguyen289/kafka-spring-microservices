@@ -1,7 +1,7 @@
-package com.dannielnguyen.sampleproducer.rest.producer.impl;
+package com.dannielnguyen.producer.rest.producer.impl;
 
-import com.dannielnguyen.sampleproducer.core.base.BaseService;
-import com.dannielnguyen.sampleproducer.rest.producer.ProducerService;
+import com.dannielnguyen.producer.rest.producer.ProducerService;
+import com.dannielnguyen.producer.core.base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
