@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dannielnguyen.consumer.module.first.FirstHandleRepository">
+
+    <insert id="insertConsumerTask"
+            parameterType="com.dannielnguyen.consumer.module.first.query.InsertConsumerTaskPrt"
+            useGeneratedKeys="true" keyProperty="id" keyColumn="ID">
+        INSERT INTO CONSUMER_TASK (
+            CONSUMER_ID,
+            CONSUMER_GROUP,
+            PAYLOAD
+        ) VALUES (
+            #{consumerId},
+            #{consumerGroup},
+            #{payload}
+        )
+    </insert>
+
+</mapper>

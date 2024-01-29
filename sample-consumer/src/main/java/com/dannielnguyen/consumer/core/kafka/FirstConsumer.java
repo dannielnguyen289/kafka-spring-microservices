@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleconsumer.core.kafka;
+package com.dannielnguyen.consumer.core.kafka;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

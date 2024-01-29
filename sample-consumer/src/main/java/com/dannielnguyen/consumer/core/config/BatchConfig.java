@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleconsumer.core.config;
+package com.dannielnguyen.consumer.core.config;
 
 import org.springframework.context.annotation.Configuration;
 

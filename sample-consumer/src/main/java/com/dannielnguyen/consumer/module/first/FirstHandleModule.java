@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleconsumer.module.first;
+package com.dannielnguyen.consumer.module.first;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;

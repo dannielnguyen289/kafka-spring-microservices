@@ -1,4 +1,4 @@
-package com.dannielnguyen.sampleconsumer.core.base;
+package com.dannielnguyen.consumer.core.base;
 
 import jakarta.transaction.Transactional;
 import org.apache.commons.logging.Log;
