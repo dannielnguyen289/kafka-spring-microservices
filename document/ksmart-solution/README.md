@@ -8,7 +8,7 @@ KSMART server to utilize anywhere in the network through a high-intuitive user i
 enhanced decision making and traceability to improve metrics, increase board quality and lower costs by eliminating variance, false calls and escapes.
 <div align="center">
     <br />
-    <img src="./images/ksmart-solutions.jpg" alt="KSmart Solution">
+    <img src="images/ksmart-solution.jpg" alt="KSmart Solution">
     <br />
     https://youtu.be/RYJTLqn7nYU?si=LVJqkl1PpS9o3pb5
 </div>
@@ -40,5 +40,13 @@ It ensures consistent inspection performance for all inspection systems with opt
 With quality control capabilities and a full lineup of integrated inspection systems, KSMART times everything together: 
 SPI, AOI, and production machine with AI-powered production analysis for fully-automated control that boosts productivity while minimizing costs.
 
+### 3. Event-Driven Architecture
+
+<div align="center">
+    <br />
+    <img src="./diagram/ksmart-solution.jpg" alt="KSmart Solution">
+    <br />
+    https://youtu.be/RYJTLqn7nYU?si=LVJqkl1PpS9o3pb5
+</div>
 
 
