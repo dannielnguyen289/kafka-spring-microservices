@@ -18,7 +18,7 @@
 - Must use a separate database to store and control job status for Spring Batch framework
 - It's convenience if the consumer component has already own database. Spring batch can use this DB instance too.
 
-### Pattern 2: Use retry topic for each consumer group
+### Pattern 2: Use retry topic for each consumer groups
 
 <div align="center">
     <br />
