@@ -9,7 +9,7 @@
 
 #### Pros
 
-- The event handle logic is totally isolated between all consumer group.
+- The event handle logic is totally isolated among all consumer groups.
 - It's very easy to implement because the Spring Framework already support everything.
 - It's easy to scale-out event handle note, because the database is separate statefulset set.
 
@@ -19,5 +19,23 @@
 - It's convenience if the consumer component has already own database. Spring batch can use this DB instance too.
 
 ### Pattern 2: Use retry topic for each consumer group
+
+<div align="center">
+    <br />
+    <img src="diagram/pattern-02.jpg" alt="Pattern 02">
+</div>
+
+
+#### Pros
+
+- The event handle logic is totally isolated among all consumer groups.
+- It's easy to scale-out event handle note, because each consumer groups use different retry topic.
+- Do not need use statefulset database to manage state of event processing job.
+
+#### Cons
+
+- Must use different retry topics for each consumer groups to prevent duplicate event of other groups.
+- Must setup dead events storage for save, monitor and investigate the dead event to ensure the system consistent data.
+
 
 ### Pattern 3: Just ignore error in we can
