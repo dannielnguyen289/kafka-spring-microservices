@@ -4,17 +4,17 @@
 
 <ul>
     <li>
-      <a href="https://github.com/vcid-sso/readme/blob/master/design/system-architecture.md">
+      <a href="https://github.com/dannielnguyen289/kafka-spring-microservices/blob/master/document/ksmart-solution/README.md">
         <span>KSmart Solution</span>
       </a>
     </li>
     <li>
-      <a href="https://github.com/vcid-sso/readme/blob/master/design/data-structure.md">
+      <a href="https://github.com/dannielnguyen289/kafka-spring-microservices/blob/master/document/kfc-omnichannel/README.md">
         <span>KFC Omnichannel Solution</span>
       </a>
     </li>
     <li>
-      <a href="https://github.com/vcid-sso/readme/blob/master/design/data-structure.md">
+      <a href="https://github.com/dannielnguyen289/kafka-spring-microservices/blob/master/document/handle-error/README.md">
         <span>Handle Error Patterns</span>
       </a>
     </li>
