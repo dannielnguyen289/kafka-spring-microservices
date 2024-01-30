@@ -45,8 +45,27 @@ SPI, AOI, and production machine with AI-powered production analysis for fully-a
 <div align="center">
     <br />
     <img src="./diagram/ksmart-solution.jpg" alt="KSmart Solution">
-    <br />
-    https://youtu.be/RYJTLqn7nYU?si=LVJqkl1PpS9o3pb5
 </div>
+
+
+| #  | Event Topic           | Producer Component       | Consumer Components (Group)          | Description                                                                             |
+|----|-----------------------|--------------------------|--------------------------------------|-----------------------------------------------------------------------------------------|
+| 01 | **Inspection Result** | **M2M Connector**        | **InfluexDB Connector**              | Save inspection result raw data to Influx DB                                            |
+| -  | -                     | -                        | **Line Management Processing**       | Manipulation data and save machine & line data for managing                             |
+| -  | -                     | -                        | **Performance Statistic Processing** | Statistic data for display performance dashboard (charts)                               |
+| -  | -                     | -                        | **Automatic Process Optimizer**      | Run AI Model to analysis data to detect abnormal cases and optimize SMT Line processing |
+| -  | -                     | -                        | **Monitor Web App**                  | Notify event (of data changes) for user (operators)                                     |
+| 02 | **Machine State**     | **M2M Connector**        | **InfluexDB Connector**              | Save machine state raw data to Influx DB                                                |
+| -  | -                     | -                        | **Line Management Processing**       | Manipulation data and save machine & line data for managing                             |
+| -  | -                     | -                        | **Performance Statistic Processing** | Statistic data for display performance dashboard (charts)                               |
+| -  | -                     | -                        | **Automatic Process Optimizer**      | Run AI Model to analysis data to detect abnormal cases and optimize SMT Line processing |
+| -  | -                     | -                        | **Monitor Web App**                  | Notify event (of data changes) for user (operators)                                     |
+| 03 | **Monitor Command**   | **Monitor Web App**      | **M2M Connector**                    | Send monitor command from operator to machine (SPI, Pre-AOI, Post-AOI)                  |
+| -  | -                     | -                        | **Automatic Process Optimizer**      | Run AI Model to analysis data to detect abnormal cases and optimize SMT Line processing |
+| 04 | **Process Optimize**  | **AI Process Optimizer** | **M2M Connector**                    | Send monitor command from AI Optimizer to machine (SPI, Pre-AOI, Post-AOI)              |
+| -  | -                     | -                        | **Monitor Web App**                  | Notify event (of data changes) for user (operators)                                     |
+
+
+
 
 
