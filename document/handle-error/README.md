@@ -38,4 +38,7 @@
 - Must setup dead events storage for save, monitor and investigate the dead event to ensure the system consistent data.
 
 
-### Pattern 3: Just ignore error in we can
+### Pattern 3: Just ignore error if we can
+
+- In some cases, the business logic of the system can accept some lose data and just focus on improve the latency time
+- With these cases, just ignore the error when handling event and focus on improve the response time of system.
